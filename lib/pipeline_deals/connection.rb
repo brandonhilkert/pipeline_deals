@@ -14,7 +14,6 @@ module PipelineDeals
       Faraday.new(options) do |conn|
         conn.request :json
         conn.response :json
-        conn.response :mashify
         conn.adapter PipelineDeals.adapter
       end
     end

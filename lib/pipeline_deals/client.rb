@@ -42,7 +42,7 @@ module PipelineDeals
         request.params["api_key"] = PipelineDeals.api_key
       end
 
-      response.body
+      PipelineDeals::Response.new(response.body)
     end
   end
 end
