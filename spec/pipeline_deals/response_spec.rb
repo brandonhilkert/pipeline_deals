@@ -30,6 +30,10 @@ module PipelineDeals
       it "sets the pagination object" do
         subject.pagination.should be_a PipelineDeals::Response::Pagination
       end
+
+      it "returns a descendent of a Hashie object" do
+        subject.pagination.should be_a Hashie::Mash
+      end
     end
 
     describe ".results" do
@@ -40,6 +44,11 @@ module PipelineDeals
       it "turns results into native Result class" do
         subject.results.first.should be_a PipelineDeals::Response::Result
       end
+
+      it "returns an array of descendents of Hashie objects" do
+        subject.results.first.should be_a Hashie::Mash
+      end
+
     end
 
   end
