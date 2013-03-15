@@ -5,12 +5,8 @@ module PipelineDeals
     end
 
     module ClassMethods
-      def find(id)
-
-      end
-
       def all
-        get(@endpoint)
+        self.new.get(endpoint)
       end
     end
   end

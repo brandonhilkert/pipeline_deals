@@ -2,12 +2,7 @@ require 'pipeline_deals/client'
 
 module PipelineDeals
   class Person < Client
-    include PipelineDeals::Query
-
-    def initialize
-      @endpoint = "people"
-    end
-
+    self.endpoint = "companies"
   end
 end
 
