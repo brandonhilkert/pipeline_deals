@@ -16,7 +16,11 @@ module PipelineDeals
     end
 
     def results
-      response.fetch("entries").map{ |entry| Result.new(entry) }
+      if response["entries"]
+        response.fetch("entries").map{ |entry| Result.new(entry) }
+      else
+        Result.new(response)
+      end
     end
   end
 end

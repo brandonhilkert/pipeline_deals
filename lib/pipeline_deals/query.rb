@@ -5,6 +5,10 @@ module PipelineDeals
     end
 
     module ClassMethods
+      def find(id)
+        self.new.get("#{endpoint}/#{id}")
+      end
+
       def all
         self.new.get(endpoint)
       end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module PipelineDeals
   describe Response do
-    let(:response) do
+    let(:collection_response) do
      {
         "pagination" => {
           "per_page"=>200,
@@ -24,9 +24,16 @@ module PipelineDeals
       }
     end
 
-    subject { PipelineDeals::Response.new(response) }
+    let(:single_response) do
+      {
+        "name" => "Google",
+        "size" => "100"
+      }
+    end
 
     describe ".pagination" do
+      subject { PipelineDeals::Response.new(collection_response) }
+
       it "sets the pagination object" do
         subject.pagination.should be_a PipelineDeals::Response::Pagination
       end
@@ -37,18 +44,29 @@ module PipelineDeals
     end
 
     describe ".results" do
-      it "sets the results object" do
-        subject.results.should be_a Array
+      describe "with a collection" do
+        subject { PipelineDeals::Response.new(collection_response) }
+
+        it "sets the results object" do
+          subject.results.should be_a Array
+        end
+
+        it "turns results into native Result class" do
+          subject.results.first.should be_a PipelineDeals::Response::Result
+        end
+
+        it "returns an array of descendents of Hashie objects" do
+          subject.results.first.should be_a Hashie::Mash
+        end
       end
 
-      it "turns results into native Result class" do
-        subject.results.first.should be_a PipelineDeals::Response::Result
-      end
+      describe "with a single response" do
+        subject { PipelineDeals::Response.new(single_response) }
 
-      it "returns an array of descendents of Hashie objects" do
-        subject.results.first.should be_a Hashie::Mash
+        it "turns results into native Result class" do
+          subject.results.should be_a PipelineDeals::Response::Result
+        end
       end
-
     end
 
   end
