@@ -4,6 +4,12 @@ module PipelineDeals
   class Client
     include PipelineDeals::Connection
 
+    def all
+      get(@endpoint)
+    end
+
+    private
+
     # Perform an HTTP GET request
     def get(path, options = {})
       request(:get, path, options)
@@ -24,8 +30,6 @@ module PipelineDeals
       request(:delete, path, options)
     end
 
-    private
-
     # Perform an HTTP request
     def request(method, path, options)
       raise PipelineDeals::MissingApiKey unless PipelineDeals.api_key
@@ -33,7 +37,7 @@ module PipelineDeals
       response = connection.send(method) do |request|
         case method
         when :get, :delete
-          request.url(path, options)
+          request.url("#{path}.json", options)
         when :post, :put
           request.path = path
           request.body = options unless options.empty?

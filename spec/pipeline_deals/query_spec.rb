@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module PipelineDeals
-  describe Client do
+  describe Query do
 
   end
 end

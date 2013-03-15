@@ -1,6 +1,6 @@
 # PipelineDeals
 
-TODO: Write a gem description
+PipelineDeals is a Ruby gem to leverage the PipelineDeals developer API.
 
 ## Installation
 
@@ -16,9 +16,20 @@ Or install it yourself as:
 
     $ gem install pipeline_deals
 
+## Configuration
+
+```Ruby
+PipelineDeals.configure do |config|
+  config.api_key    = "asdf"
+end
+```
+or
+```Ruby
+PipelineDeals.api_key = "asdf"
+```
 ## Usage
 
-TODO: Write usage instructions here
+
 
 ## Contributing
 
