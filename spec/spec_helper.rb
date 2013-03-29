@@ -4,3 +4,4 @@ rescue LoadError
 end
 
 require 'pipeline_deals'
+require 'webmock/rspec'
