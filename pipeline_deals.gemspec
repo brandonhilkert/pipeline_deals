@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = PipelineDeals::VERSION
   gem.authors       = ["Brandon Hilkert"]
   gem.email         = ["brandonhilkert@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Ruby API wrapper for the PipelineDeals API.}
+  gem.summary       = %q{Ruby API wrapper for the PipelineDeals API.}
+  gem.homepage      = "https://github.com/brandonhilkert/pipeline_deals"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
